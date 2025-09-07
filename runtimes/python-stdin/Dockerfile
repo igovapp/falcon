@@ -14,5 +14,5 @@ RUN chmod +x /opt/run.sh
 RUN chmod 755 -R /opt/modes
 # COPY sitecustomize.py /usr/local/lib/python3.13/
 RUN ls -al /opt
-# ENTRYPOINT ["/opt/run.sh"]
-ENTRYPOINT ["/opt/docker-entrypoint.sh"]
+ENTRYPOINT ["/opt/run.sh"]
+# ENTRYPOINT ["/opt/docker-entrypoint.sh"]
