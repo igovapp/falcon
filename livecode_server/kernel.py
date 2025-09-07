@@ -7,6 +7,8 @@ import json
 from .msgtypes import ExecMessage
 from . import config
 
+import os
+
 class Kernel:
     def __init__(self, runtime):
         self.runtime = runtime
@@ -16,7 +18,13 @@ class Kernel:
         """
         kspec = config.get_runtime(self.runtime)
         code_filename = msg.code_filename or kspec['code_filename']
-        with tempfile.TemporaryDirectory() as root:
+
+        current_path = os.getcwd()
+        print(current_path)
+        temp_dir = os.path.join('temp')
+        os.makedirs(temp_dir,exist_ok=True)
+
+        with tempfile.TemporaryDirectory(dir=temp_dir,delete=False) as root:
             self.root = root
             if msg.code:
                 self.save_file(root, code_filename, msg.code)
