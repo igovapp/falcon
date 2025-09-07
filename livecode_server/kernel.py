@@ -24,7 +24,7 @@ class Kernel:
         temp_dir = os.path.join(current_path,'temp')
         os.makedirs(temp_dir,exist_ok=True)
 
-        with tempfile.TemporaryDirectory(dir=temp_dir,delete=False) as root:
+        with tempfile.TemporaryDirectory(dir=temp_dir) as root:
             self.root = root
             if msg.code:
                 self.save_file(root, code_filename, msg.code)
