@@ -7,6 +7,14 @@ A sample config file config_sample.yml is provided in the repo.
 """
 import os
 import yaml
+from environs import Env
+
+
+# Load .env file into environment
+env = Env()
+env.read_env()
+
+
 
 DEFAULT_CONFIG = {
     "runtimes": {
@@ -51,6 +59,8 @@ def read_config():
         return {}
 
 CONFIG = read_config()
+
+print(CONFIG)
 
 def _get_runtime(config, name):
     return config.get('runtimes', {}).get(name)

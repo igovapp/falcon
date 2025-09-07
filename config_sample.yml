@@ -9,3 +9,9 @@ runtimes:
     image: fossunited/falcon-mypy
     code_filename: main.py
     command: []
+
+  python:
+    # image: fossunited/falcon-python:3.9
+    image: igovapp/python-stdin:3.13
+    code_filename: main.py
+    command: []

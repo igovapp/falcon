@@ -21,7 +21,7 @@ class Kernel:
 
         current_path = os.getcwd()
         print(current_path)
-        temp_dir = os.path.join('temp')
+        temp_dir = os.path.join(current_path,'temp')
         os.makedirs(temp_dir,exist_ok=True)
 
         with tempfile.TemporaryDirectory(dir=temp_dir,delete=False) as root:
@@ -32,6 +32,7 @@ class Kernel:
             for f in msg.files:
                 self.save_file(root, f['filename'], f['contents'])
 
+            print("command",msg.command or kspec['command'])
             container = await self.start_container(
                 image=kspec['image'],
                 command=msg.command or kspec['command'],
